@@ -1,0 +1,44 @@
+{
+  "name": "nextimage/nextimage",
+  "description": "NextImage is a PHP Packages for images resizing",
+  "license": "MIT",
+  "keywords": [
+    "NextImage"
+  ],
+  "authors": [
+    {
+      "name": "Sam Akael",
+      "email": "s.akael@hotmail.com",
+      "role": "Coffee Maker :)"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "illuminate/config": "6.5.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "8.*",
+    "mockery/mockery": "1.2.*",
+    "symfony/var-dumper": "5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Nextimage\\Nextimage\\": "src",
+      "Nextimage\\Library\\": "src/library"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nextimage\\Nextimage\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "minimum-stability": "stable"
+}
