@@ -7,7 +7,7 @@ NextImage is a ** PHP image resizing ** library providing an easier and expressi
 
 ## Requirements
 
-- PHP >=5.4
+- PHP >=5.5
 
 ## Getting started
 
