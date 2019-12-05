@@ -106,7 +106,7 @@ class Resize
 				$invertScaleQuality = 9 - round(($imageQuality / 100) * 9);
 				// Check PHP supports this file type
 				if (imagetypes() & IMG_PNG) {
-					if(imagepng($this->newImage, $savePath, $invertScaleQuality)) {
+					if (imagepng($this->newImage, $savePath, $invertScaleQuality)) {
 						imagedestroy($this->newImage);
 						return true;
 					} else {
