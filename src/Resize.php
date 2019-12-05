@@ -26,8 +26,7 @@ class Resize
 	public function __construct($filename, $ext)
 	{
 		try {
-
-			if (file_exists($filename)) {
+			if (file_exists($filename) || getimagesize($filename)) {
 				$this->setImage($filename);
 			} else {
 				throw new Exception('Image ' . $filename . ' can not be found, try another image.');
@@ -145,10 +144,10 @@ class Resize
 				break;
 			default:
 				if ($this->origWidth > $width || $this->origHeight > $height) {
-					if ($this->origWidth > $this->origHeight) {
+					if ($this->origWidth >= $this->origHeight) {
 						$this->resizeHeight = $this->resizeHeightByWidth($width);
 						$this->resizeWidth  = $width;
-					} else if ($this->origWidth < $this->origHeight) {
+					} else if ($this->origWidth <= $this->origHeight) {
 						$this->resizeWidth  = $this->resizeWidthByHeight($height);
 						$this->resizeHeight = $height;
 					}
