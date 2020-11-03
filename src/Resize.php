@@ -106,7 +106,9 @@ class Resize
 				$invertScaleQuality = 9 - round(($imageQuality / 100) * 9);
 				// Check PHP supports this file type
 				if (imagetypes() & IMG_PNG) {
-					if(imagepng($this->newImage, $savePath, $invertScaleQuality)) {
+					imagealphablending( $this->newImage, false );
+					imagesavealpha( $this->newImage, true );
+					if (imagepng($this->newImage, $savePath, $invertScaleQuality)) {
 						imagedestroy($this->newImage);
 						return true;
 					} else {
@@ -157,8 +159,14 @@ class Resize
 				}
 				break;
 		}
-		$this->newImage = imagecreatetruecolor($this->resizeWidth, $this->resizeHeight);
-		imagecopyresampled($this->newImage, $this->image, 0, 0, 0, 0, $this->resizeWidth, $this->resizeHeight, $this->origWidth, $this->origHeight);
+
+			$this->newImage = imagecreatetruecolor($this->resizeWidth, $this->resizeHeight);
+			if($this->ext == 'image/png'){
+				imagealphablending( $this->newImage, false );
+				imagesavealpha( $this->newImage, true );
+			}
+			imagecopyresampled($this->newImage, $this->image, 0, 0, 0, 0, $this->resizeWidth, $this->resizeHeight, $this->origWidth, $this->origHeight);
+	
 	}
 	/**
 	 * Get the resized height from the width keeping the aspect ratio
